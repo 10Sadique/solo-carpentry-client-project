@@ -1,5 +1,6 @@
 import { StarIcon } from '@heroicons/react/24/solid';
 import React from 'react';
+import { PhotoView } from 'react-photo-view';
 import { useLoaderData } from 'react-router-dom';
 import useTitle from '../hooks/useTitle';
 
@@ -25,11 +26,13 @@ const ServiceDetails = () => {
                 <div className="p-5 shadow-md bg-gray-dark shadow-gray-dark">
                     <div className="flex flex-col justify-between gap-5 md:flex-row">
                         <div className="w-full overflow-hidden">
-                            <img
-                                className="w-full transition-all duration-300 cursor-pointer ease hover:scale-110"
-                                src={img}
-                                alt=""
-                            />
+                            <PhotoView src={img}>
+                                <img
+                                    className="w-full transition-all duration-300 cursor-pointer ease hover:scale-110"
+                                    src={img}
+                                    alt=""
+                                />
+                            </PhotoView>
                         </div>
                         <div className="w-full">
                             <h1 className="mb-3 text-2xl font-bold">{name}</h1>
