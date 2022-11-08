@@ -1,8 +1,11 @@
 import React from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import useTitle from '../hooks/useTitle';
 
 const AddService = () => {
+    useTitle('Add Service');
+
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
