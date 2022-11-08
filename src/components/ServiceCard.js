@@ -7,14 +7,14 @@ const ServiceCard = ({ service }) => {
 
     const ratings = [];
     for (let i = 0; i < rating; i++) {
-        ratings.push(<StarIcon className="w-5 h-5 text-orange" />);
+        ratings.push(<StarIcon key={i} className="w-5 h-5 text-orange" />);
     }
 
     return (
         <div className="p-5 shadow-md bg-gray-dark shadow-gray-dark">
             <div className="w-full overflow-hidden">
                 <img
-                    className="w-full transition-all duration-300 ease-in cursor-pointer hover:scale-110"
+                    className="w-full transition-all duration-300 cursor-pointer ease hover:scale-110"
                     src={img}
                     alt=""
                 />
