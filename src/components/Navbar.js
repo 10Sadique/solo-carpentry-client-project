@@ -6,7 +6,7 @@ import { AuthContext } from '../contexts/AuthContext';
 
 const Navbar = () => {
     const [navbar, setNavbar] = useState(false);
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     const navLinks = [
         <div
@@ -53,7 +53,7 @@ const Navbar = () => {
                     </NavLink>
                     <button>Sign Out</button>
                     <div className="w-10 h-10 overflow-hidden rounded-full bg-orange/40">
-                        {user?.photoURL && (
+                        {user.photoURL && (
                             <img
                                 className="object-cover w-full h-full"
                                 src={user.photoURL}
