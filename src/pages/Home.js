@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import AboutUs from '../components/AboutUs';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
 import useTitle from '../hooks/useTitle';
@@ -31,6 +32,7 @@ const Home = () => {
                     </Link>
                 </div>
             </div>
+            <AboutUs />
         </div>
     );
 };
