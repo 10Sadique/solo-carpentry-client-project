@@ -21,7 +21,7 @@ const ServiceDetails = () => {
                 </h1>
                 <div className="mb-5" />
                 <div className="p-5 shadow-md bg-gray-dark shadow-gray-dark">
-                    <div className="flex justify-between gap-5">
+                    <div className="flex flex-col justify-between gap-5 md:flex-row">
                         <div className="w-full overflow-hidden">
                             <img
                                 className="w-full transition-all duration-300 cursor-pointer ease hover:scale-110"
