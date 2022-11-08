@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import logo from '../assets/logo.png';
-import { AuthContext } from '../contexts/AuthContext';
+import avatar from '../assets/avatar.svg';
+import { AuthContext } from '../contexts/AuthProvider';
 
 const Navbar = () => {
     const [navbar, setNavbar] = useState(false);
@@ -47,7 +48,7 @@ const Navbar = () => {
                                 ? 'text-orange underline underline-offset-8'
                                 : ''
                         }
-                        to={`/blog`}
+                        to={`/my_reviews`}
                     >
                         My Reviews
                     </NavLink>
@@ -57,18 +58,22 @@ const Navbar = () => {
                                 ? 'text-orange underline underline-offset-8'
                                 : ''
                         }
-                        to={`/blog`}
+                        to={`/add`}
                     >
                         Add Service
                     </NavLink>
-                    <button onClick={handleSignOut}>Sign Out</button>
+                    <div className="cursor-pointer" onClick={handleSignOut}>
+                        Sign Out
+                    </div>
                     <div className="w-10 h-10 overflow-hidden rounded-full bg-orange/40">
-                        {user.photoURL && (
+                        {user.photoURL ? (
                             <img
                                 className="object-cover w-full h-full"
                                 src={user.photoURL}
                                 alt=""
                             />
+                        ) : (
+                            <img src={avatar} alt="" />
                         )}
                     </div>
                 </>

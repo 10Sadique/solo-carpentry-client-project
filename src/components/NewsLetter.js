@@ -5,7 +5,7 @@ const NewsLetter = () => {
         <div className="flex flex-col items-center justify-between gap-5 p-10 shadow-md md:p-20 bg-gray-dark shadow-gray-dark md:flex-row">
             <div>
                 <h1 className="mb-1 text-3xl font-bold text-orange ">
-                    Join Our Newsletter
+                    Join My Newsletter
                 </h1>
                 <p className="text-gray-light md:w-3/5">
                     Receive the latest info from Corgan, download free plans,

@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import { Toaster } from 'react-hot-toast';
 
 const Main = () => {
     return (
@@ -12,6 +13,7 @@ const Main = () => {
                 <ScrollRestoration />
             </div>
             <Footer />
+            <Toaster position="bottom-right" reverseOrder={false} />
         </div>
     );
 };

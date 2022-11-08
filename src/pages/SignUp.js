@@ -3,7 +3,7 @@ import useTitle from '../hooks/useTitle';
 import signup from '../assets/signin.svg';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import GoogleIcon from '../components/icons/GoogleIcon';
-import { AuthContext } from '../contexts/AuthContext';
+import { AuthContext } from '../contexts/AuthProvider';
 
 const SignUp = () => {
     useTitle('Sign Up');
