@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AboutUs from '../components/AboutUs';
 import Hero from '../components/Hero';
+import NewsLetter from '../components/NewsLetter';
 import Services from '../components/Services';
 import useTitle from '../hooks/useTitle';
 
@@ -33,6 +34,8 @@ const Home = () => {
                 </div>
             </div>
             <AboutUs />
+            <div className="mb-20" />
+            <NewsLetter />
         </div>
     );
 };
