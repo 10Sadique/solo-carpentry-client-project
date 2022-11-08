@@ -41,7 +41,7 @@ const Footer = () => {
                     </div>
                     <div className="mb-5" />
                     <p className="text-center text-gray-light md:text-left">
-                        Coypright &copy; 2022. Jafar Sadiqu Jahan. All Rights
+                        Copyright &copy; 2022. Jafar Sadiqu Jahan. All Rights
                         Reseved.
                     </p>
                 </div>
