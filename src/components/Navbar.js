@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import logo from '../assets/logo.png';
+import { AuthContext } from '../contexts/AuthContext';
 
 const Navbar = () => {
     const [navbar, setNavbar] = useState(false);
+    const { user } = useContext(AuthContext);
 
     const navLinks = [
         <div
@@ -27,23 +29,63 @@ const Navbar = () => {
             >
                 Blog
             </NavLink>
-
-            <NavLink
-                className={({ isActive }) =>
-                    isActive ? 'text-orange underline underline-offset-8' : ''
-                }
-                to={`/signin`}
-            >
-                Sing In
-            </NavLink>
-            <NavLink
-                className={({ isActive }) =>
-                    isActive ? 'text-orange underline underline-offset-8' : ''
-                }
-                to={`/signup`}
-            >
-                Sign Up
-            </NavLink>
+            {user?.uid ? (
+                <>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive
+                                ? 'text-orange underline underline-offset-8'
+                                : ''
+                        }
+                        to={`/blog`}
+                    >
+                        My Reviews
+                    </NavLink>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive
+                                ? 'text-orange underline underline-offset-8'
+                                : ''
+                        }
+                        to={`/blog`}
+                    >
+                        Add Service
+                    </NavLink>
+                    <button>Sign Out</button>
+                    <div className="w-10 h-10 overflow-hidden rounded-full bg-orange/40">
+                        {user?.photoURL && (
+                            <img
+                                className="object-cover w-full h-full"
+                                src={user.photoURL}
+                                alt=""
+                            />
+                        )}
+                    </div>
+                </>
+            ) : (
+                <>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive
+                                ? 'text-orange underline underline-offset-8'
+                                : ''
+                        }
+                        to={`/signin`}
+                    >
+                        Sing In
+                    </NavLink>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive
+                                ? 'text-orange underline underline-offset-8'
+                                : ''
+                        }
+                        to={`/signup`}
+                    >
+                        Sign Up
+                    </NavLink>
+                </>
+            )}
         </div>,
     ];
 

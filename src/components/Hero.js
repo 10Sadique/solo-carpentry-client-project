@@ -22,8 +22,12 @@ const Hero = () => {
                         </button>
                     </Link>
                 </div>
-                <div className="order-1 bg-red-200 border-[10px]  border-orange  md:col-span-2 md:order-2">
-                    <img src={hero} alt="" />
+                <div className="order-1 bg-red-200 border-[10px]  border-orange  md:col-span-2 md:order-2 overflow-hidden">
+                    <img
+                        className="transition-all duration-300 hover:scale-110 ease"
+                        src={hero}
+                        alt=""
+                    />
                 </div>
             </div>
         </div>
