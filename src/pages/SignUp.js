@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import useTitle from '../hooks/useTitle';
 import signup from '../assets/signin.svg';
 import { Link } from 'react-router-dom';
+import GoogleIcon from '../components/icons/GoogleIcon';
+import { AuthContext } from '../contexts/AuthContext';
 
 const SignUp = () => {
     useTitle('Sign Up');
+    const { createUser, setLoading, googleSignIn, updateUserProfile } =
+        useContext(AuthContext);
+    const [error, setError] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -14,8 +19,28 @@ const SignUp = () => {
         const image = form.image.value;
         const password = form.password.value;
 
-        console.log(name, email, image, password);
-        form.reset();
+        createUser(email, password)
+            .then((result) => {
+                const user = result.user;
+                updateUserProfile(name, image)
+                    .then(() => {
+                        console.log('Profile Update');
+                    })
+                    .catch((err) => {
+                        setError(err.message);
+                        console.error(err);
+                    });
+                setError('');
+                console.log(user);
+                form.reset();
+            })
+            .catch((err) => {
+                setError(err.message);
+                console.error(err);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     };
 
     return (
@@ -82,6 +107,11 @@ const SignUp = () => {
                                     required
                                 />
                             </div>
+                            {error && (
+                                <p className="font-semibold text-red-600">
+                                    {error}
+                                </p>
+                            )}
                             <p>
                                 Already have an Account?{' '}
                                 <Link className="text-orange" to={`/signin`}>
@@ -93,6 +123,10 @@ const SignUp = () => {
                                 type="submit"
                             >
                                 Sign Up
+                            </button>
+                            <button className="flex items-center justify-center gap-1 px-5 py-2 shadow-sm text-orange bg-gray-light shadow-gray-light">
+                                <GoogleIcon />
+                                <span>Google</span>
                             </button>
                         </form>
                     </div>

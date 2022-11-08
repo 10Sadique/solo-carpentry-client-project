@@ -34,10 +34,10 @@ const ServiceDetails = () => {
                                 />
                             </PhotoView>
                         </div>
-                        <div className="w-full">
+                        <div className="flex flex-col justify-between w-full">
                             <h1 className="mb-3 text-2xl font-bold">{name}</h1>
                             <p className="mb-3 text-gray-light">{desc}</p>
-                            <div className="flex items-center gap-1 mb-3">
+                            <div className="flex items-center flex-1 gap-1 mb-3">
                                 {ratings}
                             </div>
                             <p className="text-3xl font-light ">$ {price}</p>

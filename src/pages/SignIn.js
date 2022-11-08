@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import signin from '../assets/signin.svg';
+import GoogleIcon from '../components/icons/GoogleIcon';
 import useTitle from '../hooks/useTitle';
 
 const SignIn = () => {
@@ -67,8 +68,12 @@ const SignIn = () => {
                             >
                                 Sign In
                             </button>
+                            {/* <div className="mb-1" /> */}
+                            <button className="flex items-center justify-center gap-1 px-5 py-2 shadow-sm text-orange bg-gray-light shadow-gray-light">
+                                <GoogleIcon />
+                                <span>Google</span>
+                            </button>
                         </form>
-                        {/* <div className="mb-5" /> */}
                     </div>
                 </div>
             </div>
