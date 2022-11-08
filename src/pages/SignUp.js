@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import useTitle from '../hooks/useTitle';
 import signup from '../assets/signin.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import GoogleIcon from '../components/icons/GoogleIcon';
 import { AuthContext } from '../contexts/AuthContext';
 
@@ -10,6 +10,9 @@ const SignUp = () => {
     const { createUser, setLoading, googleSignIn, updateUserProfile } =
         useContext(AuthContext);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const to = location.state?.from?.pathname || '/';
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,6 +36,24 @@ const SignUp = () => {
                 setError('');
                 console.log(user);
                 form.reset();
+                navigate(to, { replace: true });
+            })
+            .catch((err) => {
+                setError(err.message);
+                console.error(err);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    };
+
+    const handleGoogleAccess = () => {
+        googleSignIn()
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+                navigate(to, { replace: true });
             })
             .catch((err) => {
                 setError(err.message);
@@ -124,7 +145,10 @@ const SignUp = () => {
                             >
                                 Sign Up
                             </button>
-                            <button className="flex items-center justify-center gap-1 px-5 py-2 shadow-sm text-orange bg-gray-light shadow-gray-light">
+                            <button
+                                onClick={handleGoogleAccess}
+                                className="flex items-center justify-center gap-1 px-5 py-2 shadow-sm text-orange bg-gray-light shadow-gray-light"
+                            >
                                 <GoogleIcon />
                                 <span>Google</span>
                             </button>
