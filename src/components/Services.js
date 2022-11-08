@@ -2,7 +2,6 @@ import React from 'react';
 import ServiceCard from './ServiceCard';
 
 const Services = ({ services }) => {
-    console.log(services);
     return (
         <div>
             <h1 className="text-3xl font-bold text-center text-orange">

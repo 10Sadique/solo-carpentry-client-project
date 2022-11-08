@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Services from '../components/Services';
 
 const ServicesPage = () => {
+    const [services, setServices] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/services`)
+            .then((res) => res.json())
+            .then((data) => {
+                setServices(data);
+            });
+    }, []);
+
     return (
         <div>
-            {/* <Services /> */}
-            Service Page
+            <Services services={services} />
         </div>
     );
 };
