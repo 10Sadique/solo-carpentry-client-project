@@ -7,11 +7,11 @@ const Hero = () => {
     return (
         <div>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-5">
-                <div className="flex flex-col justify-between order-2 md:col-span-3 md:order-1">
-                    <h1 className="mb-3 text-4xl font-extrabold md:text-7xl text-orange">
-                        Get the beautiful home you want. I’ll show you how.
+                <div className="flex flex-col justify-center order-2 md:col-span-3 md:order-1">
+                    <h1 className="mb-5 text-4xl font-extrabold capitalize md:text-7xl text-orange">
+                        Build furniture that brings people together.
                     </h1>
-                    <p className="flex-1 mb-5 text-gray-light md:w-3/4">
+                    <p className="mb-5 text-gray-light md:w-3/4">
                         Good design happens from collaboration between client,
                         architect, contractor, and designer.
                     </p>

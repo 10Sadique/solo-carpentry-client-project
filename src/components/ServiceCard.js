@@ -13,10 +13,10 @@ const ServiceCard = ({ service }) => {
 
     return (
         <div className="p-5 shadow-md bg-gray-dark shadow-gray-dark">
-            <div className="w-full overflow-hidden">
+            <div className="w-full md:h-[200px] overflow-hidden">
                 <PhotoView src={img}>
                     <img
-                        className="w-full transition-all duration-300 cursor-pointer ease hover:scale-110"
+                        className="object-cover w-full h-full transition-all duration-300 cursor-pointer ease hover:scale-110"
                         src={img}
                         alt=""
                     />

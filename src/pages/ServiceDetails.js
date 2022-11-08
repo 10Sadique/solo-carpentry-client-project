@@ -1,11 +1,13 @@
 import { StarIcon } from '@heroicons/react/24/solid';
-import React from 'react';
+import React, { useContext } from 'react';
 import { PhotoView } from 'react-photo-view';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthProvider';
 import useTitle from '../hooks/useTitle';
 
 const ServiceDetails = () => {
     const service = useLoaderData();
+    const { user } = useContext(AuthContext);
 
     const { _id, name, desc, img, price, rating } = service;
     useTitle(name);
@@ -51,8 +53,26 @@ const ServiceDetails = () => {
                 <h1 className="text-3xl font-bold text-center text-orange">
                     Service Reviews
                 </h1>
-                <div className="mb-5" />
-                <div></div>
+                <div className="mb-10" />
+                <div>
+                    <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+                        <div className="p-5 shadow-md bg-gray-dark shadow-gray-dark">
+                            Reviews
+                        </div>
+                    </div>
+                    <div className="mb-5" />
+                    <div className="p-5 shadow-md bg-gray-dark shadow-gray-dark">
+                        {user?.uid ? (
+                            <div>Add Review</div>
+                        ) : (
+                            <div className="flex items-center justify-center">
+                                <p className="font-semibold text-gray-light">
+                                    Please Sign In to Add a Review.
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                </div>
             </div>
         </div>
     );

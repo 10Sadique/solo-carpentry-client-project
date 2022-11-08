@@ -111,7 +111,7 @@ const Navbar = () => {
                     <div className="flex items-center justify-between py-3 md:block">
                         <NavLink
                             to={`/`}
-                            className="flex items-center gap-2 text-3xl font-bold"
+                            className="flex items-center gap-2 text-2xl font-bold md:text-3xl"
                         >
                             <img className="w-10" src={logo} alt="" />
                             <p>

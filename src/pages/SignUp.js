@@ -66,7 +66,7 @@ const SignUp = () => {
 
     return (
         <div>
-            <div className="flex flex-col items-center justify-between gap-5 mx-10 md:flex-row">
+            <div className="flex flex-col items-center justify-between gap-5 md:mx-10 md:flex-row">
                 <div className="w-full">
                     <img className="w-full" src={signup} alt="" />
                 </div>
@@ -75,7 +75,7 @@ const SignUp = () => {
                         Sign Up
                     </h1>
                     <div className="mb-5" />
-                    <div className="mx-10">
+                    <div className="md:mx-10">
                         <form
                             onSubmit={handleSubmit}
                             className="flex flex-col gap-5 p-5 font-semibold shadow-md bg-gray-dark shadow-gray-dark text-gray-light"

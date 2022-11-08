@@ -2,7 +2,7 @@ import React from 'react';
 import useTitle from '../hooks/useTitle';
 
 const MyReviews = () => {
-    useTitle('My Title');
+    useTitle('My Reviews');
 
     return <div>MyReviews</div>;
 };
