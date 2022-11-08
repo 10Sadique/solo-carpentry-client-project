@@ -1,7 +1,7 @@
 import React from 'react';
 
-const SingleServicePage = () => {
+const ServiceDetails = () => {
     return <div>SingleServicePage</div>;
 };
 
-export default SingleServicePage;
+export default ServiceDetails;
