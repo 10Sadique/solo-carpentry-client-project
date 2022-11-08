@@ -8,6 +8,16 @@ const Navbar = () => {
     const [navbar, setNavbar] = useState(false);
     const { user, logOut } = useContext(AuthContext);
 
+    const handleSignOut = () => {
+        logOut()
+            .then(() => {
+                console.log('Signed Out');
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    };
+
     const navLinks = [
         <div
             className="flex flex-col w-full gap-5 font-medium md:items-center md:flex-row"
@@ -51,7 +61,7 @@ const Navbar = () => {
                     >
                         Add Service
                     </NavLink>
-                    <button>Sign Out</button>
+                    <button onClick={handleSignOut}>Sign Out</button>
                     <div className="w-10 h-10 overflow-hidden rounded-full bg-orange/40">
                         {user.photoURL && (
                             <img
