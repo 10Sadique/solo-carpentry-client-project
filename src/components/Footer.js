@@ -26,16 +26,16 @@ const Footer = () => {
                 <div className="md:block hidden h-[80px] border-l border-gray-light" />
                 <div>
                     <div className="flex items-center justify-center gap-5">
-                        <div className="grid w-10 h-10 rounded-full cursor-pointer bg-orange/20 place-items-center">
+                        <div className="grid w-10 h-10 transition-all duration-300 rounded-full cursor-pointer bg-orange/20 place-items-center hover:bg-orange/10 ease">
                             <FacebookIcon />
                         </div>
-                        <div className="grid w-10 h-10 rounded-full cursor-pointer bg-orange/20 place-items-center">
+                        <div className="grid w-10 h-10 transition-all rounded-full cursor-pointer bg-orange/20 place-items-center hover:bg-orange/10 ease">
                             <TwitterIcon />
                         </div>
-                        <div className="grid w-10 h-10 rounded-full cursor-pointer bg-orange/20 place-items-center">
+                        <div className="grid w-10 h-10 transition-all rounded-full cursor-pointer bg-orange/20 place-items-center hover:bg-orange/10 ease">
                             <InstagramIcon />
                         </div>
-                        <div className="grid w-10 h-10 rounded-full cursor-pointer bg-orange/20 place-items-center">
+                        <div className="grid w-10 h-10 transition-all rounded-full cursor-pointer bg-orange/20 place-items-center hover:bg-orange/10 ease">
                             <YoutubeIcon />
                         </div>
                     </div>
