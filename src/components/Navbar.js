@@ -23,9 +23,9 @@ const Navbar = () => {
                 className={({ isActive }) =>
                     isActive ? 'text-orange underline underline-offset-8' : ''
                 }
-                to={`/events`}
+                to={`/blog`}
             >
-                My Reviews
+                Blog
             </NavLink>
 
             <NavLink
@@ -57,10 +57,12 @@ const Navbar = () => {
                             className="flex items-center gap-2 text-3xl font-bold"
                         >
                             <img className="w-10" src={logo} alt="" />
-                            <span className="text-orange">Solo</span>
-                            <span className="font-light text-gray-light">
-                                Carpentry
-                            </span>
+                            <p>
+                                <span className="text-orange">Solo</span>
+                                <span className="font-light text-gray-light">
+                                    Carpentry
+                                </span>
+                            </p>
                         </NavLink>
                         <div className="md:hidden">
                             <button
