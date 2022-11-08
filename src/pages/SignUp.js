@@ -130,7 +130,7 @@ const SignUp = () => {
                             </div>
                             {error && (
                                 <p className="font-semibold text-red-600">
-                                    {error}
+                                    {error.slice(10, -1)}
                                 </p>
                             )}
                             <p>

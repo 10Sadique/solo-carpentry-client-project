@@ -1,19 +1,56 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import signin from '../assets/signin.svg';
 import GoogleIcon from '../components/icons/GoogleIcon';
+import { AuthContext } from '../contexts/AuthContext';
 import useTitle from '../hooks/useTitle';
 
 const SignIn = () => {
     useTitle('Sign In');
+    const { googleSignIn, setLoading, signIn } = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const to = location.state?.from?.pathname || '/';
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(email, password);
-        form.reset();
+        signIn(email, password)
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+                form.reset();
+                navigate(to, { replace: true });
+            })
+            .catch((err) => {
+                setError(err.message);
+                console.error(err);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    };
+
+    const handleGoogleAccess = () => {
+        googleSignIn()
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+                navigate(to, { replace: true });
+            })
+            .catch((err) => {
+                setError(err.message);
+                console.error(err);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     };
 
     return (
@@ -62,6 +99,11 @@ const SignIn = () => {
                                     Sign Up.
                                 </Link>
                             </p>
+                            {error && (
+                                <p className="font-semibold text-red-600">
+                                    {error.slice(10, -1)}
+                                </p>
+                            )}
                             <button
                                 className="px-5 py-2 text-white shadow-sm bg-orange shadow-orange"
                                 type="submit"
@@ -69,7 +111,10 @@ const SignIn = () => {
                                 Sign In
                             </button>
                             {/* <div className="mb-1" /> */}
-                            <button className="flex items-center justify-center gap-1 px-5 py-2 shadow-sm text-orange bg-gray-light shadow-gray-light">
+                            <button
+                                onClick={handleGoogleAccess}
+                                className="flex items-center justify-center gap-1 px-5 py-2 shadow-sm text-orange bg-gray-light shadow-gray-light"
+                            >
                                 <GoogleIcon />
                                 <span>Google</span>
                             </button>
