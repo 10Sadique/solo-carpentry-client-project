@@ -1,11 +1,13 @@
 import { StarIcon } from '@heroicons/react/24/solid';
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../hooks/useTitle';
 
 const ServiceDetails = () => {
     const service = useLoaderData();
 
     const { _id, name, desc, img, price, rating } = service;
+    useTitle(name);
 
     const ratings = [];
     for (let i = 0; i < rating; i++) {

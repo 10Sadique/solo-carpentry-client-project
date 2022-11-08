@@ -19,9 +19,10 @@ const Home = () => {
     return (
         <div>
             <Hero />
+            <div className="my-20" />
             <div>
                 <Services services={services} />
-                <div className="my-10" />
+                <div className="mb-10" />
                 <div className="grid place-items-center">
                     <Link to={`/services`}>
                         <button className="px-5 py-2 font-semibold shadow-sm bg-orange shadow-orange">
