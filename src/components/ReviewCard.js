@@ -4,6 +4,8 @@ import React from 'react';
 const ReviewCard = ({ data }) => {
     const { name, img, rating, review, createdAt } = data;
 
+    console.log(img);
+
     const ratings = [];
     for (let i = 0; i < rating; i++) {
         ratings.push(<StarIcon key={i} className="w-5 h-5 text-orange" />);

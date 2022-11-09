@@ -2,12 +2,14 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import signin from '../assets/signin.svg';
 import GoogleIcon from '../components/icons/GoogleIcon';
+import Spinner from '../components/Spinner';
 import { AuthContext } from '../contexts/AuthProvider';
 import useTitle from '../hooks/useTitle';
 
 const SignIn = () => {
     useTitle('Sign In');
-    const { googleSignIn, setLoading, signIn } = useContext(AuthContext);
+    const { googleSignIn, setLoading, signIn, loading } =
+        useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -52,6 +54,14 @@ const SignIn = () => {
                 setLoading(false);
             });
     };
+
+    if (loading) {
+        return (
+            <div className="flex items-center justify-center my-40">
+                <Spinner />
+            </div>
+        );
+    }
 
     return (
         <div>

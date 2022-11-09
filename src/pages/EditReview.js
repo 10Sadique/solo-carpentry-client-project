@@ -1,10 +1,12 @@
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
-import React, { useState } from 'react';
-import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
+import { XMarkIcon } from '@heroicons/react/24/solid';
+import React from 'react';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import useTitle from '../hooks/useTitle';
 
 const EditReview = () => {
+    useTitle('Edit Review');
     const data = useLoaderData();
-
     const navigate = useNavigate();
 
     const { _id, name, rating, review } = data;
@@ -39,6 +41,10 @@ const EditReview = () => {
             });
     };
 
+    const handleCancel = () => {
+        navigate('/my_reviews');
+    };
+
     return (
         <div>
             <h1 className="text-3xl font-bold text-center text-orange mb-5">
@@ -58,7 +64,7 @@ const EditReview = () => {
                             name="name"
                             placeholder="Name"
                             defaultValue={name}
-                            // readOnly
+                            readOnly
                             className="right-0 w-full px-5 py-2 shadow-sm bg-zinc-700"
                             required
                         />
@@ -93,13 +99,22 @@ const EditReview = () => {
                     </div>
                 </div>
 
-                <button
-                    className="px-5 py-2 text-white shadow-sm md:self-end bg-orange shadow-orange flex items-center gap-2"
-                    type="submit"
-                >
-                    <ArrowPathIcon className="w-5 h-5" />
-                    <span>Update Review</span>
-                </button>
+                <div className="md:self-end flex items-center gap-5">
+                    <button
+                        className="px-5 py-2 text-white shadow-sm  bg-orange shadow-orange flex items-center gap-2"
+                        type="submit"
+                    >
+                        <ArrowPathIcon className="w-5 h-5" />
+                        <span>Update Review</span>
+                    </button>
+                    <button
+                        onClick={handleCancel}
+                        className="px-5 py-2 text-orange shadow-sm  bg-gray-light shadow-gray-light flex items-center gap-2"
+                    >
+                        <XMarkIcon className="w-5 h-5" />
+                        <span>Cancel</span>
+                    </button>
+                </div>
             </form>
         </div>
     );

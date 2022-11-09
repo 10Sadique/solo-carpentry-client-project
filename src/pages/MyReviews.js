@@ -45,13 +45,15 @@ const MyReviews = () => {
 
     return (
         <div>
-            <h1 className="text-3xl font-bold text-center text-orange mb-5">
+            <h1 className="text-3xl font-bold text-center text-orange mb-10">
                 My Reviews
             </h1>
             {/* if no reviews available */}
             <div>
                 {reviews.length === 0 && (
-                    <div className="text-center h-40">No Revies added yet.</div>
+                    <div className="text-center h-40">
+                        No reviews added yet.
+                    </div>
                 )}
             </div>
             {/* if reviews available */}

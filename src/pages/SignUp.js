@@ -4,10 +4,11 @@ import signup from '../assets/signin.svg';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import GoogleIcon from '../components/icons/GoogleIcon';
 import { AuthContext } from '../contexts/AuthProvider';
+import Spinner from '../components/Spinner';
 
 const SignUp = () => {
     useTitle('Sign Up');
-    const { createUser, setLoading, googleSignIn, updateUserProfile } =
+    const { createUser, setLoading, googleSignIn, updateUserProfile, loading } =
         useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -63,6 +64,14 @@ const SignUp = () => {
                 setLoading(false);
             });
     };
+
+    if (loading) {
+        return (
+            <div className="flex items-center justify-center my-52">
+                <Spinner />
+            </div>
+        );
+    }
 
     return (
         <div>

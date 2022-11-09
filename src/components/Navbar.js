@@ -66,15 +66,14 @@ const Navbar = () => {
                         Sign Out
                     </div>
                     <div className="w-10 h-10 overflow-hidden rounded-full bg-orange/40">
-                        {user.photoURL ? (
+                        {user?.photoURL && (
                             <img
                                 className="object-cover w-full h-full"
                                 src={user.photoURL}
                                 alt=""
                             />
-                        ) : (
-                            <img src={avatar} alt="" />
                         )}
+                        {!user.photoURL && <img src={avatar} alt="" />}
                     </div>
                 </>
             ) : (

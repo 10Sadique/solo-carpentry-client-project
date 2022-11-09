@@ -24,7 +24,6 @@ const Hero = () => {
                 </div>
                 <div className="order-1 border-[10px]  border-orange  md:col-span-2 md:order-2 overflow-hidden">
                     <img
-                        width={1000}
                         className="transition-all duration-300 hover:scale-110 ease w-full"
                         src={hero}
                         alt=""

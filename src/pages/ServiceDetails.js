@@ -1,7 +1,7 @@
 import { StarIcon } from '@heroicons/react/24/solid';
 import React, { useContext, useEffect, useState } from 'react';
 import { PhotoView } from 'react-photo-view';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import AddReview from '../components/AddReview';
 import ReviewCard from '../components/ReviewCard';
 import { AuthContext } from '../contexts/AuthProvider';
@@ -11,6 +11,7 @@ const ServiceDetails = () => {
     const service = useLoaderData();
     const { user } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
+    const location = useLocation();
 
     const { _id, name, desc, img, price, rating } = service;
     const reviewTitle = name;
@@ -132,7 +133,16 @@ const ServiceDetails = () => {
                         ) : (
                             <div className="flex items-center justify-center p-5">
                                 <p className="font-semibold text-gray-light">
-                                    Please Sign In to Add a Review.
+                                    Please{' '}
+                                    <Link
+                                        to={`/signin`}
+                                        state={{ from: location }}
+                                        replace
+                                        className="text-orange underline"
+                                    >
+                                        Sign In
+                                    </Link>{' '}
+                                    to Add a Review.
                                 </p>
                             </div>
                         )}
