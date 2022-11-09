@@ -13,6 +13,7 @@ const ServiceDetails = () => {
     const [reviews, setReviews] = useState([]);
 
     const { _id, name, desc, img, price, rating } = service;
+    const reviewTitle = name;
     useTitle(name);
 
     const ratings = [];
@@ -51,6 +52,7 @@ const ServiceDetails = () => {
             img: user.photoURL,
             rating,
             review,
+            reviewTitle,
         };
         // console.log(data);
         fetch('http://localhost:5000/reviews/add', {
@@ -128,7 +130,7 @@ const ServiceDetails = () => {
                                 handleSubmit={handleSubmit}
                             />
                         ) : (
-                            <div className="flex items-center justify-center">
+                            <div className="flex items-center justify-center p-5">
                                 <p className="font-semibold text-gray-light">
                                     Please Sign In to Add a Review.
                                 </p>
