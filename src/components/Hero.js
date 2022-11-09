@@ -7,6 +7,7 @@ const Hero = () => {
     return (
         <div>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-5">
+                {/* header text */}
                 <div className="flex flex-col justify-center order-2 md:col-span-3 md:order-1">
                     <h1 className="mb-5 text-4xl font-extrabold capitalize md:text-7xl text-orange">
                         Build furniture that brings people together.
@@ -22,6 +23,7 @@ const Hero = () => {
                         </button>
                     </Link>
                 </div>
+                {/* header image */}
                 <div className="order-1 border-[10px]  border-orange  md:col-span-2 md:order-2 overflow-hidden">
                     <img
                         className="transition-all duration-300 hover:scale-110 ease w-full"

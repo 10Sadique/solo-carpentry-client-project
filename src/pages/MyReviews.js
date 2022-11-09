@@ -22,6 +22,7 @@ const MyReviews = () => {
         setReviews(data);
     };
 
+    // handle delete action
     const handleDelete = (id) => {
         fetch(`http://localhost:5000/reviews/${id}`, {
             method: 'DELETE',

@@ -9,6 +9,7 @@ const Main = () => {
         <div>
             <Navbar />
             <div className="max-w-[360px] md:max-w-3xl lg:max-w-6xl mx-auto my-14 md:my-20">
+                {/* All items will be shown here */}
                 <Outlet />
                 <ScrollRestoration />
             </div>

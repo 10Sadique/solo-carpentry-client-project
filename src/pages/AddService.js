@@ -8,6 +8,7 @@ const AddService = () => {
 
     const navigate = useNavigate();
 
+    // adding service to DB
     const handleSubmit = (e) => {
         e.preventDefault();
 

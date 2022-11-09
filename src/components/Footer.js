@@ -10,6 +10,7 @@ const Footer = () => {
         <div className="p-20 bg-gray-dark">
             <div className="flex flex-col items-center justify-between gap-5 md:flex-row">
                 <div>
+                    {/* logo */}
                     <div className="flex items-center gap-2 text-3xl font-bold">
                         <img className="w-10" src={logo} alt="" />
                         <p>

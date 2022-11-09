@@ -19,6 +19,7 @@ const ReviewCard = ({ data }) => {
     return (
         <div className="p-5 shadow-md bg-gray-dark shadow-gray-dark">
             <div className="flex items-center gap-5 mb-5">
+                {/* user image */}
                 <div className="h-10 w-10 overflow-hidden rounded-full border-2 border-orange">
                     <img
                         className="w-full h-full object-cover"
@@ -26,13 +27,18 @@ const ReviewCard = ({ data }) => {
                         alt=""
                     />
                 </div>
+                {/* user details */}
                 <div>
+                    {/* name */}
                     <h2 className="font-semibold text-sm">{name}</h2>
+                    {/* date */}
                     <p className="text-xs text-gray-light">{created}</p>
                 </div>
             </div>
             <div>
+                {/* rating */}
                 <div className="mb-3 flex items-center gap-1">{ratings}</div>
+                {/* review */}
                 <p className="text-gray-light">{review}</p>
             </div>
         </div>

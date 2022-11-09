@@ -100,6 +100,7 @@ const EditReview = () => {
                 </div>
 
                 <div className="md:self-end flex items-center gap-5">
+                    {/* update button */}
                     <button
                         className="px-5 py-2 text-white shadow-sm  bg-orange shadow-orange flex items-center gap-2"
                         type="submit"
@@ -107,6 +108,7 @@ const EditReview = () => {
                         <ArrowPathIcon className="w-5 h-5" />
                         <span>Update Review</span>
                     </button>
+                    {/* cancel button */}
                     <button
                         onClick={handleCancel}
                         className="px-5 py-2 text-orange shadow-sm  bg-gray-light shadow-gray-light flex items-center gap-2"

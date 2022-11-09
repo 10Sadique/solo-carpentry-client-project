@@ -24,9 +24,13 @@ const ServiceCard = ({ service }) => {
             </div>
             <div className="my-5" />
             <div>
+                {/* name */}
                 <h1 className="mb-3 text-2xl font-bold">{name}</h1>
+                {/* short descripiton */}
                 <p className="mb-3 text-gray-light">{desc.slice(0, 100)}...</p>
+                {/* rating */}
                 <div className="flex items-center gap-1 mb-3">{ratings}</div>
+                {/* price */}
                 <p className="mb-3 text-3xl font-light">$ {price}</p>
                 <Link to={`/services/${_id}`} className="w-full">
                     <button className="flex items-center justify-center w-full gap-1 px-5 py-2 ml-auto font-semibold shadow-sm bg-orange shadow-orange">
