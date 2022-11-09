@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import MyReviewCard from '../components/MyReviewCard';
 import { AuthContext } from '../contexts/AuthProvider';
 import useTitle from '../hooks/useTitle';
@@ -30,6 +31,14 @@ const MyReviews = () => {
                 console.log(data);
                 if (data.deletedCount > 0) {
                     loadData(email);
+                    toast('Review Deleted!!', {
+                        icon: '⛔',
+                        style: {
+                            // borderRadius: '10px',
+                            background: '#333',
+                            color: '#BAC1B8',
+                        },
+                    });
                 }
             });
     };

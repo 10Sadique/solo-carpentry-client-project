@@ -2,6 +2,7 @@ import { StarIcon } from '@heroicons/react/24/solid';
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MyReviewCard = ({ data, handleDelete }) => {
     const { _id, name, img, rating, review, createdAt, reviewTitle } = data;
@@ -41,13 +42,15 @@ const MyReviewCard = ({ data, handleDelete }) => {
                 <div className="mb-3 flex items-center gap-1">{ratings}</div>
                 <p className="text-gray-light mb-3">{review}</p>
                 <div className="flex items-center gap-5 justify-between">
-                    <button className="bg-orange font-semibold py-2 px-5 text-center w-full shadow-sm shadow-orange flex items-center gap-2 justify-center">
-                        <PencilSquareIcon className="h-5 w-5" />
-                        <span>Edit</span>
-                    </button>
+                    <Link className="w-full" to={`/my_reviews/edit/${_id}`}>
+                        <button className="bg-orange font-semibold py-2  text-center w-full shadow-sm shadow-orange flex items-center gap-2 justify-center">
+                            <PencilSquareIcon className="h-5 w-5" />
+                            <span>Edit</span>
+                        </button>
+                    </Link>
                     <button
                         onClick={() => handleDelete(_id)}
-                        className="bg-gray-light text-orange font-semibold py-2 px-5 text-center w-full shadow-sm shadow-gray-light flex items-center gap-2 justify-center"
+                        className="bg-gray-light text-orange font-semibold py-2  text-center w-full shadow-sm shadow-gray-light flex items-center gap-2 justify-center"
                     >
                         <TrashIcon className="h-5 w-5" />
                         <span>Delete</span>
