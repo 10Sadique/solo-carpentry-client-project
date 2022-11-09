@@ -27,7 +27,9 @@ const ServiceCard = ({ service }) => {
                 {/* name */}
                 <h1 className="mb-3 text-2xl font-bold">{name}</h1>
                 {/* short descripiton */}
-                <p className="mb-3 text-gray-light">{desc.slice(0, 100)}...</p>
+                <p className="mb-3 h-[72px] text-gray-light">
+                    {desc.slice(0, 100)}...
+                </p>
                 {/* rating */}
                 <div className="flex items-center gap-1 mb-3">{ratings}</div>
                 {/* price */}
