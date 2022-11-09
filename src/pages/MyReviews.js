@@ -21,6 +21,19 @@ const MyReviews = () => {
         setReviews(data);
     };
 
+    const handleDelete = (id) => {
+        fetch(`http://localhost:5000/reviews/${id}`, {
+            method: 'DELETE',
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                if (data.deletedCount > 0) {
+                    loadData(email);
+                }
+            });
+    };
+
     return (
         <div>
             <h1 className="text-3xl font-bold text-center text-orange mb-5">
@@ -35,7 +48,11 @@ const MyReviews = () => {
             {/* if reviews available */}
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
                 {reviews.map((review) => (
-                    <MyReviewCard data={review} key={review._id} />
+                    <MyReviewCard
+                        handleDelete={handleDelete}
+                        data={review}
+                        key={review._id}
+                    />
                 ))}
             </div>
         </div>
