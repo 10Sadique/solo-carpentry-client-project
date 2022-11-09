@@ -1,14 +1,16 @@
 import { StarIcon } from '@heroicons/react/24/solid';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { PhotoView } from 'react-photo-view';
 import { useLoaderData } from 'react-router-dom';
 import AddReview from '../components/AddReview';
+import ReviewCard from '../components/ReviewCard';
 import { AuthContext } from '../contexts/AuthProvider';
 import useTitle from '../hooks/useTitle';
 
 const ServiceDetails = () => {
     const service = useLoaderData();
     const { user } = useContext(AuthContext);
+    const [reviews, setReviews] = useState([]);
 
     const { _id, name, desc, img, price, rating } = service;
     useTitle(name);
@@ -17,6 +19,22 @@ const ServiceDetails = () => {
     for (let i = 0; i < rating; i++) {
         ratings.push(<StarIcon key={i} className="w-5 h-5 text-orange" />);
     }
+
+    useEffect(() => {
+        // fetch(`http://localhost:5000/reviews/${_id}`)
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //         setReviews(data);
+        //     });
+        loadData(_id);
+    }, [_id]);
+
+    const loadData = async (id) => {
+        const res = await fetch(`http://localhost:5000/reviews/${id}`);
+        const data = await res.json();
+
+        setReviews(data);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -44,7 +62,10 @@ const ServiceDetails = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
+                // console.log(data);
+                if (data.acknowledged) {
+                    loadData(_id);
+                }
             });
 
         form.reset();
@@ -89,10 +110,16 @@ const ServiceDetails = () => {
                 <div className="mb-10" />
                 <div>
                     <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-                        <div className="p-5 shadow-md bg-gray-dark shadow-gray-dark">
-                            Reviews
-                        </div>
+                        {reviews.map((review) => (
+                            <ReviewCard key={review._id} data={review} />
+                        ))}
                     </div>
+                    {reviews.length === 0 && (
+                        <div className="p-5 shadow-md bg-gray-dark shadow-gray-dark font-semibold text-gray-light text-center">
+                            No Reviews Available.
+                        </div>
+                    )}
+
                     <div className="mb-5" />
                     <div className="shadow-md bg-gray-dark shadow-gray-dark">
                         {user?.uid ? (
