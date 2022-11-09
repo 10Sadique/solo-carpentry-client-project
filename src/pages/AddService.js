@@ -41,9 +41,9 @@ const AddService = () => {
                     toast('Service Added Successfully!', {
                         icon: '✅',
                         style: {
-                            borderRadius: '10px',
-                            background: '#333',
-                            color: '#BAC1B8',
+                            borderRadius: '0px',
+                            background: '#3CB35A',
+                            color: '#fff',
                         },
                     });
                     navigate('/');

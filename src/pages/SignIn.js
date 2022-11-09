@@ -25,6 +25,25 @@ const SignIn = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
+
+                const currentUser = {
+                    email: user.email,
+                };
+
+                // jwt verfication process
+                fetch(`http://localhost:5000/jwt`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(currentUser),
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        // console.log(data);
+                        localStorage.setItem('myReviewsToken', data.token);
+                    });
+
                 setError('');
                 form.reset();
                 navigate(to, { replace: true });
@@ -43,6 +62,24 @@ const SignIn = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
+
+                const currentUser = {
+                    email: user.email,
+                };
+                // jwt verfication process
+                fetch(`http://localhost:5000/jwt`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(currentUser),
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        // console.log(data);
+                        localStorage.setItem('myReviewsToken', data.token);
+                    });
+
                 setError('');
                 navigate(to, { replace: true });
             })

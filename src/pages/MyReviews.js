@@ -17,7 +17,16 @@ const MyReviews = () => {
     }, [email]);
 
     const loadData = async (email) => {
-        const res = await fetch(`http://localhost:5000/reviews?email=${email}`);
+        const res = await fetch(
+            `http://localhost:5000/reviews?email=${email}`,
+            {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem(
+                        'myReviewsToken'
+                    )}`,
+                },
+            }
+        );
         const data = await res.json();
         // console.log(data);
         setReviews(data);
@@ -36,9 +45,9 @@ const MyReviews = () => {
                     toast('Review Deleted!!', {
                         icon: '⛔',
                         style: {
-                            // borderRadius: '10px',
-                            background: '#333',
-                            color: '#BAC1B8',
+                            borderRadius: '0px',
+                            background: '#e34a32',
+                            color: '#fff',
                         },
                     });
                 }
