@@ -1,4 +1,5 @@
 import { StarIcon } from '@heroicons/react/24/solid';
+import { CalendarIcon, CircleStackIcon } from '@heroicons/react/24/outline';
 import React, { useContext, useEffect, useState } from 'react';
 import { PhotoView } from 'react-photo-view';
 import { Link, useLoaderData, useLocation } from 'react-router-dom';
@@ -74,6 +75,22 @@ const ServiceDetails = () => {
         form.reset();
     };
 
+    // sort by date
+    const handleDateSort = () => {
+        fetch(`http://localhost:5000/reviews/${_id}?sort=Date`)
+            .then((res) => res.json())
+            .then((data) => {
+                setReviews(data);
+                console.log('Date Sort');
+            });
+    };
+
+    // sort by default
+    const handleDefaultSort = () => {
+        loadData(_id);
+        console.log('Default Sort');
+    };
+
     return (
         <div>
             {/* Service Details */}
@@ -112,6 +129,28 @@ const ServiceDetails = () => {
                     Service Reviews
                 </h1>
                 <div className="mb-10" />
+                {reviews.length > 0 && (
+                    <div className="flex items-center gap-3">
+                        <span>Sort By: </span>
+                        {/* date sort */}
+                        <button
+                            onClick={handleDateSort}
+                            className="font-semibold text-orange flex items-center gap-1"
+                        >
+                            <CalendarIcon className="w-5 h-5" />
+                            <span>Date</span>
+                        </button>
+                        {/* defaul sort */}
+                        <button
+                            onClick={handleDefaultSort}
+                            className="font-semibold text-orange flex items-center gap-1"
+                        >
+                            <CircleStackIcon className="w-5 h-5" />
+                            <span>Default</span>
+                        </button>
+                    </div>
+                )}
+                <div className="mb-5" />
                 <div>
                     <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
                         {reviews.map((review) => (
