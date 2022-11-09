@@ -2,6 +2,7 @@ import { StarIcon } from '@heroicons/react/24/solid';
 import React, { useContext } from 'react';
 import { PhotoView } from 'react-photo-view';
 import { useLoaderData } from 'react-router-dom';
+import AddReview from '../components/AddReview';
 import { AuthContext } from '../contexts/AuthProvider';
 import useTitle from '../hooks/useTitle';
 
@@ -16,6 +17,38 @@ const ServiceDetails = () => {
     for (let i = 0; i < rating; i++) {
         ratings.push(<StarIcon key={i} className="w-5 h-5 text-orange" />);
     }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const form = e.target;
+        const name = form.name.value;
+        const rating = form.rating.value;
+        const review = form.review.value;
+
+        const data = {
+            serviceId: _id,
+            name,
+            email: user.email,
+            img: user.photoURL,
+            rating,
+            review,
+        };
+        // console.log(data);
+        fetch('http://localhost:5000/reviews/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            });
+
+        form.reset();
+    };
 
     return (
         <div>
@@ -61,9 +94,12 @@ const ServiceDetails = () => {
                         </div>
                     </div>
                     <div className="mb-5" />
-                    <div className="p-5 shadow-md bg-gray-dark shadow-gray-dark">
+                    <div className="shadow-md bg-gray-dark shadow-gray-dark">
                         {user?.uid ? (
-                            <div>Add Review</div>
+                            <AddReview
+                                user={user}
+                                handleSubmit={handleSubmit}
+                            />
                         ) : (
                             <div className="flex items-center justify-center">
                                 <p className="font-semibold text-gray-light">

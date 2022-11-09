@@ -8,8 +8,8 @@ const NewsLetter = () => {
                     Join My Newsletter
                 </h1>
                 <p className="text-gray-light md:w-3/5">
-                    Receive the latest info from Corgan, download free plans,
-                    and even post your own!
+                    Receive the latest info from me, download free plans, and
+                    even post your own!
                 </p>
             </div>
             <div className="flex items-center shadow-sm shadow-orange">
