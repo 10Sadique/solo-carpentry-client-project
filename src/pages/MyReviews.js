@@ -18,7 +18,7 @@ const MyReviews = () => {
 
     const loadData = async (email) => {
         const res = await fetch(
-            `http://localhost:5000/reviews?email=${email}`,
+            `https://solo-carpentry-server.vercel.app/reviews?email=${email}`,
             {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem(
@@ -34,7 +34,7 @@ const MyReviews = () => {
 
     // handle delete action
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/reviews/${id}`, {
+        fetch(`https://solo-carpentry-server.vercel.app/reviews/${id}`, {
             method: 'DELETE',
         })
             .then((res) => res.json())
@@ -55,7 +55,16 @@ const MyReviews = () => {
     };
 
     const handleDateSort = () => {
-        fetch(`http://localhost:5000/reviews?email=${email}&sort=Date`)
+        fetch(
+            `https://solo-carpentry-server.vercel.app/reviews?email=${email}&sort=Date`,
+            {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem(
+                        'myReviewsToken'
+                    )}`,
+                },
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 setReviews(data);

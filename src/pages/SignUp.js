@@ -42,7 +42,7 @@ const SignUp = () => {
                 };
 
                 // jwt verfication process
-                fetch(`http://localhost:5000/jwt`, {
+                fetch(`https://solo-carpentry-server.vercel.app/jwt`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ const SignUp = () => {
                     email: user.email,
                 };
                 // jwt verfication process
-                fetch(`http://localhost:5000/jwt`, {
+                fetch(`https://solo-carpentry-server.vercel.app/jwt`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

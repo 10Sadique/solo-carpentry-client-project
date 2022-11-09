@@ -5,7 +5,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const MyReviewCard = ({ data, handleDelete }) => {
-    const { _id, name, img, rating, review, createdAt, reviewTitle } = data;
+    const {
+        _id,
+        name,
+        img,
+        rating,
+        review,
+        createdAt,
+        reviewTitle,
+        serviceId,
+    } = data;
 
     const ratings = [];
     for (let i = 0; i < rating; i++) {
@@ -18,7 +27,7 @@ const MyReviewCard = ({ data, handleDelete }) => {
     }-${date.getDate()}-${date.getFullYear()}`;
 
     return (
-        <div className="p-5 shadow-md bg-gray-dark shadow-gray-dark">
+        <div className="p-5 shadow-md bg-gray-dark shadow-gray-dark flex flex-col justify-between">
             <div className="flex items-center gap-5 mb-5">
                 {/* user image */}
                 <div className="h-10 w-10 overflow-hidden rounded-full border-2 border-orange">
@@ -36,18 +45,21 @@ const MyReviewCard = ({ data, handleDelete }) => {
                     <p className="text-xs text-gray-light">{created}</p>
                 </div>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col flex-1 justify-between">
                 {/* review title */}
                 <p className="mb-3">
                     Review on{' '}
-                    <span className="font-semibold text-orange">
+                    <Link
+                        to={`/services/${serviceId}`}
+                        className="font-semibold text-orange"
+                    >
                         {reviewTitle}
-                    </span>
+                    </Link>
                 </p>
                 {/* rating */}
                 <div className="mb-3 flex items-center gap-1">{ratings}</div>
                 {/* review */}
-                <p className="text-gray-light mb-3">{review}</p>
+                <p className="text-gray-light mb-3 flex-1">{review}</p>
                 <div className="flex items-center gap-5 justify-between">
                     {/* edit button */}
                     <Link className="w-full" to={`/my_reviews/edit/${_id}`}>

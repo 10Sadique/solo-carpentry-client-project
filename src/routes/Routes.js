@@ -10,6 +10,7 @@ import AddService from '../pages/AddService';
 import PrivateRoute from './PrivateRoute';
 import MyReviews from '../pages/MyReviews';
 import EditReview from '../pages/EditReview';
+import ErrorPage from '../pages/ErrorPage';
 
 export const router = createBrowserRouter([
     {
@@ -25,7 +26,9 @@ export const router = createBrowserRouter([
                 path: '/services/:id',
                 element: <ServiceDetails />,
                 loader: ({ params }) =>
-                    fetch(`http://localhost:5000/services/${params.id}`),
+                    fetch(
+                        `https://solo-carpentry-server.vercel.app/services/${params.id}`
+                    ),
             },
             {
                 path: '/add',
@@ -51,8 +54,11 @@ export const router = createBrowserRouter([
                     </PrivateRoute>
                 ),
                 loader: ({ params }) =>
-                    fetch(`http://localhost:5000/review/${params.id}`),
+                    fetch(
+                        `https://solo-carpentry-server.vercel.app/review/${params.id}`
+                    ),
             },
         ],
     },
+    { path: '/*', element: <ErrorPage /> },
 ]);

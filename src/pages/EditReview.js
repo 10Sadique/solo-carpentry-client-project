@@ -25,7 +25,7 @@ const EditReview = () => {
             review,
         };
 
-        fetch(`http://localhost:5000/review/${_id}`, {
+        fetch(`https://solo-carpentry-server.vercel.app/review/${_id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -99,10 +99,10 @@ const EditReview = () => {
                     </div>
                 </div>
 
-                <div className="md:self-end flex items-center gap-5">
+                <div className="md:self-end flex items-center gap-5 flex-col md:flex-row">
                     {/* update button */}
                     <button
-                        className="px-5 py-2 text-white shadow-sm  bg-orange shadow-orange flex items-center gap-2"
+                        className="px-5 py-2 text-white w-full md:w-auto justify-center shadow-sm  bg-orange shadow-orange flex items-center gap-2"
                         type="submit"
                     >
                         <ArrowPathIcon className="w-5 h-5" />
@@ -111,7 +111,7 @@ const EditReview = () => {
                     {/* cancel button */}
                     <button
                         onClick={handleCancel}
-                        className="px-5 py-2 text-orange shadow-sm  bg-gray-light shadow-gray-light flex items-center gap-2"
+                        className="px-5 py-2 text-orange w-full md:w-auto justify-center shadow-sm  bg-gray-light shadow-gray-light flex items-center gap-2"
                     >
                         <XMarkIcon className="w-5 h-5" />
                         <span>Cancel</span>

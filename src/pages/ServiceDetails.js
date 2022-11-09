@@ -7,6 +7,7 @@ import AddReview from '../components/AddReview';
 import ReviewCard from '../components/ReviewCard';
 import { AuthContext } from '../contexts/AuthProvider';
 import useTitle from '../hooks/useTitle';
+import toast from 'react-hot-toast';
 
 const ServiceDetails = () => {
     const service = useLoaderData();
@@ -28,7 +29,9 @@ const ServiceDetails = () => {
     }, [_id]);
 
     const loadData = async (id) => {
-        const res = await fetch(`http://localhost:5000/reviews/${id}`);
+        const res = await fetch(
+            `https://solo-carpentry-server.vercel.app/reviews/${id}`
+        );
         const data = await res.json();
 
         setReviews(data);
@@ -52,7 +55,7 @@ const ServiceDetails = () => {
             reviewTitle,
         };
         // console.log(data);
-        fetch('http://localhost:5000/reviews/add', {
+        fetch('https://solo-carpentry-server.vercel.app/reviews/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -64,6 +67,14 @@ const ServiceDetails = () => {
                 // console.log(data);
                 if (data.acknowledged) {
                     loadData(_id);
+                    toast('Review Added Successfully!', {
+                        icon: '✅',
+                        style: {
+                            borderRadius: '0px',
+                            background: '#3CB35A',
+                            color: '#fff',
+                        },
+                    });
                 }
             });
 
@@ -72,7 +83,9 @@ const ServiceDetails = () => {
 
     // sort by date
     const handleDateSort = () => {
-        fetch(`http://localhost:5000/reviews/${_id}?sort=Date`)
+        fetch(
+            `https://solo-carpentry-server.vercel.app/reviews/${_id}?sort=Date`
+        )
             .then((res) => res.json())
             .then((data) => {
                 setReviews(data);

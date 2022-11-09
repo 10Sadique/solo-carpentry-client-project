@@ -27,7 +27,7 @@ const AddService = () => {
             desc,
         };
 
-        fetch(`http://localhost:5000/services/add`, {
+        fetch(`https://solo-carpentry-server.vercel.app/services/add`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
