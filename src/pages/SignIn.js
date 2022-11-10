@@ -42,11 +42,11 @@ const SignIn = () => {
                     .then((data) => {
                         // console.log(data);
                         localStorage.setItem('myReviewsToken', data.token);
+                        navigate(to, { replace: true });
                     });
 
                 setError('');
                 form.reset();
-                navigate(to, { replace: true });
             })
             .catch((err) => {
                 setError(err.message);
@@ -78,10 +78,10 @@ const SignIn = () => {
                     .then((data) => {
                         // console.log(data);
                         localStorage.setItem('myReviewsToken', data.token);
+                        navigate(to, { replace: true });
                     });
 
                 setError('');
-                navigate(to, { replace: true });
             })
             .catch((err) => {
                 setError(err.message);

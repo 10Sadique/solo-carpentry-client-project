@@ -1,6 +1,7 @@
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import React from 'react';
+import toast from 'react-hot-toast';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import useTitle from '../hooks/useTitle';
 
@@ -36,6 +37,14 @@ const EditReview = () => {
             .then((data) => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
+                    toast('Review Edited Successfully!', {
+                        icon: '✅',
+                        style: {
+                            borderRadius: '0px',
+                            background: '#3CB35A',
+                            color: '#fff',
+                        },
+                    });
                     navigate('/my_reviews');
                 }
             });
